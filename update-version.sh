@@ -1,3 +1,9 @@
 #!/bin/bash
 
-date > version.txt
+date > version
+
+git add update version.sh version
+
+git commit -m "?"
+
+git push
