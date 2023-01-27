@@ -2,7 +2,7 @@
 
 date > version
 
-git add update version.sh version
+git add update-version.sh version
 
 git commit -m "?"
 
