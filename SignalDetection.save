@@ -1,0 +1,18 @@
+#!/bin/python
+
+from scipy.stats import norm
+
+class SignalDetection:
+	def __init__(self, hits, misses, false_alarms, correct_rejections):
+		self.hits = hits
+		self.misses = misses
+		self.false_alarms = false_alarms
+		self.correct_rejections = correct_rejections
+	def d_prime(self):
+		hit_rate = self.hits / (self.hits + self.misses)
+		false_alarm_rate = self.false_alarms / (self.false_alarms + self.correct_rejections)
+		return norm.ppf(hit_rate) - norm.ppf(false_alarm_rate)
+	def criterion(self):
+		hit_rate = self.hits / (self.hits + self.misses)
+		flase_alarm_rate = self.false_alarms / (self.false_alarms + self.correct_rejections)
+		return -0.5 * (norm.ppf(hit_rate) + norm.ppf(false_alarm_rate))
