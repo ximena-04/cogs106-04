@@ -10,10 +10,7 @@ class SignalDetection:
     self.misses = misses
     self.falseAlarms = falseAlarms
     self.correctRejections = correctRejections
-
-  def __str__(self):
-    return f"hits: {self.hit}, misses: {self.misses}, false alarms: {self.__fa}, correct rejections: {self.__correctRejections}"
-
+  
   def hitRate(self):
     self.__hr = (self.hits / (self.hits + self.misses))
     return self.__hr
@@ -40,10 +37,10 @@ class SignalDetection:
     return SignalDetection(self.hits * scalar, self.misses * scalar, self.falseAlarms * scalar, self.correctRejections * scalar)
   
   @staticmethod
-  def plot_roc(objects):
+  def plot_roc(sdtList):
     x_vals = []
     y_vals = []
-    for classObj in objects:
+    for classObj in sdtList:
       classObj.hitRate()
       classObj.falseAlarmRate()
       newY = classObj.__hr
